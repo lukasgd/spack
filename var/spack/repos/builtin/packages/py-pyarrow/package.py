@@ -20,7 +20,7 @@ class PyPyarrow(PythonPackage, CudaPackage):
 
     license("Apache-2.0")
 
-    version("15.0.1", sha256="21d812548d39d490e0c6928a7c663f37b96bf764034123d4b4ab4530ecc757a9")
+    #version("15.0.1", sha256="21d812548d39d490e0c6928a7c663f37b96bf764034123d4b4ab4530ecc757a9")
     version("14.0.2", sha256="36cef6ba12b499d864d1def3e990f97949e0b79400d08b7cf74504ffbd3eb025")
     version("13.0.0", sha256="83333726e83ed44b0ac94d8d7a21bbdee4a05029c3b1e8db58a863eec8fd8a33")
     version("12.0.1", sha256="cce317fc96e5b71107bf1f9f184d5e54e2bd14bbf3f9a3d62819961f0af86fec")
