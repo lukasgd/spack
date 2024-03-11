@@ -39,7 +39,7 @@ class PyPyarrow(PythonPackage, CudaPackage):
     variant("parquet", default=False, description="Build with Parquet support")
     variant("orc", default=False, description="Build with orc support")
     variant("dataset", default=False, description="Build with Dataset support")
-    variant("snappy", default=True, description="Build with Snappy data compression")
+    #variant("snappy", default=True, description="Build with Snappy data compression")
 
     conflicts("~parquet", when="+dataset")
 
@@ -94,8 +94,8 @@ class PyPyarrow(PythonPackage, CudaPackage):
         env.set("PYARROW_WITH_CUDA", self.spec.satisfies("+cuda"))
         env.set("PYARROW_WITH_ORC", self.spec.satisfies("+orc"))
         env.set("PYARROW_WITH_DATASET", self.spec.satisfies("+dataset"))
-        if self.spec.satisfies("+snappy"):
-            env.set("PYARROW_CMAKE_OPTIONS", '-DARROW_WITH_SNAPPY=ON')
+        #if self.spec.satisfies("+snappy"):
+        #    env.set("PYARROW_CMAKE_OPTIONS", '-DARROW_WITH_SNAPPY=ON')
 
     def install_options(self, spec, prefix):
         args = []
