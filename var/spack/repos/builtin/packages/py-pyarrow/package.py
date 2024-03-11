@@ -94,7 +94,8 @@ class PyPyarrow(PythonPackage, CudaPackage):
         env.set("PYARROW_WITH_CUDA", self.spec.satisfies("+cuda"))
         env.set("PYARROW_WITH_ORC", self.spec.satisfies("+orc"))
         env.set("PYARROW_WITH_DATASET", self.spec.satisfies("+dataset"))
-        env.set("PYARROW_CMAKE_OPTIONS='-DARROW_WITH_SNAPPY=ON'", self.spec.satisfies("+snappy"))
+        if self.spec.satisfies("+snappy"):
+            env.set("PYARROW_CMAKE_OPTIONS", '-DARROW_WITH_SNAPPY=ON')
 
     def install_options(self, spec, prefix):
         args = []
