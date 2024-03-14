@@ -31,5 +31,5 @@ class PyFsspec(PythonPackage):
     variant("http", default=False, description="HTTPFileSystem support", when="@0.8.1:")
 
     depends_on("py-setuptools", type="build")
-    depends_on("py-requests", type=("build", "run"), when="+http")
+    depends_on("py-requests", type=("build", "run"), when="@:2023+http")
     depends_on("py-aiohttp", type=("build", "run"), when="+http")
