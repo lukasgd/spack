@@ -21,6 +21,7 @@ class PyTorchNvidiaApex(PythonPackage, CudaPackage):
 
     depends_on("python@3:", type=("build", "run"))
     depends_on("py-setuptools", type="build")
+    depends_on("py-packaging", type="build")
     depends_on("py-torch@0.4:", type=("build", "run"))
     depends_on("cuda@9:", when="+cuda")
     depends_on("py-pybind11", type=("build", "link", "run"))
@@ -61,6 +62,7 @@ class PyTorchNvidiaApex(PythonPackage, CudaPackage):
         else:
             env.unset("CUDA_HOME")
 
+    @when("^python@:3.10")
     def global_options(self, spec, prefix):
         args = []
         if spec.satisfies("^py-torch@1.0:"):
@@ -104,3 +106,11 @@ class PyTorchNvidiaApex(PythonPackage, CudaPackage):
         if "+gpu_direct_storage" in spec:
             args.append("--gpu_direct_storage")
         return args
+
+    @when("^python@3.11:")
+    def config_settings(self, spec, prefix):
+        return {
+            "builddir": "build",
+            "compile-args": f"-j{make_jobs}",
+            "--global-option": "--cpp_ext --cuda_ext",
+        }
