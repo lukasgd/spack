@@ -11,6 +11,7 @@ class PyTorchmetrics(PythonPackage):
 
     homepage = "https://github.com/PyTorchLightning/metrics"
     pypi = "torchmetrics/torchmetrics-0.3.1.tar.gz"
+    git = "https://github.com/Lightning-AI/torchmetrics.git"
 
     maintainers("adamjstewart")
 
