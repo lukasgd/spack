@@ -11,6 +11,7 @@ class PyTriton(PythonPackage):
 
     homepage = "https://github.com/openai/triton"
     url = "https://github.com/openai/triton/archive/refs/tags/v2.1.0.tar.gz"
+    git = "https://github.com/openai/triton.git"
 
     license("MIT")
 
