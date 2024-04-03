@@ -109,8 +109,50 @@ class PyTorchNvidiaApex(PythonPackage, CudaPackage):
 
     @when("^python@3.11:")
     def config_settings(self, spec, prefix):
+        global_opts = ''
+        if spec.satisfies("^py-torch@1.0:"):
+            global_opts += ' --cpp_ext'
+            if "+cuda" in spec:
+                global_opts += ' --cuda_ext'
+        if "+dist_adam" in spec:
+            global_opts += ' --distributed_adam'
+        if "+dist_lamb" in spec:
+            global_opts += ' --distributed_lamb'
+        if "+perm_search" in spec:
+            global_opts += ' --permutation_search'
+        if "+bnp" in spec:
+            global_opts += ' --bnp'
+        if "+xentropy" in spec:
+            global_opts += ' --xentropy'
+        if "+focal_loss" in spec:
+            global_opts += ' --focal_loss'
+        if "+group_norm" in spec:
+            global_opts += ' --group_norm'
+        if "+index_mul_2d" in spec:
+            global_opts += ' --index_mul_2d'
+        if "+fast_layer_norm" in spec:
+            global_opts += ' --fast_layer_norm'
+        if "+fmha" in spec:
+            global_opts += ' --fmha'
+        if "+fast_multihead_attn" in spec:
+            global_opts += ' --fast_multihead_attn'
+        if "+transducer" in spec:
+            global_opts += ' --transducer'
+        if "+cudnn_gbn" in spec:
+            global_opts += ' --cudnn_gbn'
+        if "+peer_memory" in spec:
+            global_opts += ' --peer_memory'
+        if "+nccl_p2p" in spec:
+            global_opts += ' --nccl_p2p'
+        if "+fast_bottleneck" in spec:
+            global_opts += ' --fast_bottleneck'
+        if "+fused_conv_bias_relu" in spec:
+            global_opts += ' --fused_conv_bias_relu'
+        if "+gpu_direct_storage" in spec:
+            global_opts += ' --gpu_direct_storage'
+
         return {
             "builddir": "build",
             "compile-args": f"-j{make_jobs}",
-            "--global-option": "--cpp_ext --cuda_ext",
+            "--global-option": global_opts,
         }
