@@ -25,6 +25,7 @@ class PyTorchNvidiaApex(PythonPackage, CudaPackage):
     depends_on("py-torch@0.4:", type=("build", "run"))
     depends_on("cuda@9:", when="+cuda")
     depends_on("py-pybind11", type=("build", "link", "run"))
+    depends_on("ninja", type="build")
 
     variant("cuda", default=True, description="Build with CUDA")
     variant("dist_adam", default=True, description="Build with distributed Adam optimizer")
