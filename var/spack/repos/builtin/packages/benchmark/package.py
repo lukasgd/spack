@@ -39,6 +39,11 @@ class Benchmark(CMakePackage):
     version("1.0.0", sha256="d2206c263fc1a7803d4b10e164e0c225f6bcf0d5e5f20b87929f137dee247b54")
 
     variant(
+        "shared",
+        default=False,
+        description="Build shared libraries"
+    ),
+    variant(
         "build_type",
         default="RelWithDebInfo",
         description="The build type to build",
@@ -59,6 +64,7 @@ class Benchmark(CMakePackage):
     def cmake_args(self):
         # No need for testing for the install
         args = [
+            self.define_from_variant("BUILD_SHARED_LIBS", "shared"),
             self.define("BENCHMARK_ENABLE_TESTING", False),
             self.define_from_variant("BENCHMARK_ENABLE_LIBPFM", "performance_counters"),
         ]

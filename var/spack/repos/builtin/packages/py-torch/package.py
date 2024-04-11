@@ -199,7 +199,7 @@ class PyTorch(PythonPackage, CudaPackage, ROCmPackage):
     depends_on("pthreadpool@2020-06-15", when="@1.6:1.7")
     depends_on("psimd@2020-05-17", when="@1.6:")
     depends_on("fxdiv@2020-04-17", when="@1.6:")
-    depends_on("benchmark", when="@1.6:+test")
+    depends_on("benchmark +shared", when="@1.6:+test")
 
     # Optional dependencies
     # cmake/public/cuda.cmake
