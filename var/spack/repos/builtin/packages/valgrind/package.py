@@ -22,7 +22,7 @@ class Valgrind(AutotoolsPackage, SourcewarePackage):
 
     homepage = "https://valgrind.org/"
     sourceware_mirror_path = "valgrind/valgrind-3.13.0.tar.bz2"
-    git = "git://sourceware.org/git/valgrind.git"
+    git = "https://sourceware.org/git/valgrind.git"
 
     license("GPL-2.0-or-later")
 
